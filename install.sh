@@ -25,6 +25,13 @@ if command -v brew &>/dev/null; then
     brew install --cask spotify
     brew install --cask iterm2
     brew install --cask meetingbar
+    brew install --cask itsycal
+    brew install --cask mouseless@preview
+    brew install --cask brave-browser
+    brew install --cask obsidian
+    brew install --cask termius
+    brew install --cask utm
+    brew install --cask telegram
 
 
     ### Fonts
