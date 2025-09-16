@@ -17,6 +17,7 @@ if command -v brew &>/dev/null; then
     brew install borders
     brew install spaceman
     brew install switchaudio-osx
+	brew install jq
 
     ## Casks
     echo "Installing Brew casks..."
