@@ -43,6 +43,7 @@ if command -v brew &>/dev/null; then
 	brew install --cask claude-code
 	brew install --cask cursor
 	brew install --cask cursor-cli
+	brew install --cask hiddenbar
 
 
     ### Fonts
