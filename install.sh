@@ -14,10 +14,17 @@ if command -v brew &>/dev/null; then
 
     ## Packages
     echo "Installing Brew packages..."
-    brew install borders
+	brew install node
+    # brew install borders
     brew install spaceman
     brew install switchaudio-osx
 	brew install jq
+	brew install yarn
+	brew install zsh-autosuggestions
+	brew install zsh-fast-syntax-highlighting
+	brew install supabase
+	brew instrall sqlite
+	brew install gh
 
     ## Casks
     echo "Installing Brew casks..."
@@ -33,6 +40,9 @@ if command -v brew &>/dev/null; then
     brew install --cask termius
     brew install --cask utm
     brew install --cask telegram
+	brew install --cask claude-code
+	brew install --cask cursor
+	brew install --cask cursor-cli
 
 
     ### Fonts
@@ -145,5 +155,5 @@ if defaults read com.apple.finder &>/dev/null; then
 fi
 
 # Start Services
-echo "Starting Services (grant permissions)..."
-brew services start borders
+# echo "Starting Services (grant permissions)..."
+# brew services start borders
