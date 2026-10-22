@@ -1,0 +1,6 @@
+anthropic.claude-code
+catppuccin.catppuccin-vsc
+esbenp.prettier-vscode
+henoc.svgeditor
+ms-azuretools.vscode-containers
+ms-vscode-remote.remote-containers

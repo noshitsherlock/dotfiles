@@ -1,0 +1,96 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "3",
+        "type": "context-length",
+        "color": "brightBlack"
+      },
+      {
+        "id": "5",
+        "type": "git-branch",
+        "color": "magenta"
+      },
+      {
+        "id": "7",
+        "type": "git-changes",
+        "color": "yellow"
+      }
+    ],
+    [
+      {
+        "id": "015a76c8-3aab-4e3e-8986-96787305c0d6",
+        "type": "context-percentage",
+        "backgroundColor": "bgCyan"
+      },
+      {
+        "id": "fc52439d-5a81-40d0-b799-5d57d607baa5",
+        "type": "weekly-usage",
+        "backgroundColor": "bgRed"
+      },
+      {
+        "id": "e78294ef-b979-42a1-b70a-468a9a1694fd",
+        "type": "session-usage",
+        "backgroundColor": "bgBrightBlue"
+      },
+      {
+        "id": "df3b1d93-7555-4e6d-bb2e-5ab5613e38dc",
+        "type": "version",
+        "backgroundColor": "bgBrightCyan"
+      }
+    ],
+    [
+      {
+        "id": "28c2bee0-83cb-43f0-a51d-afe4977d8181",
+        "type": "current-working-dir",
+        "backgroundColor": "bgWhite",
+        "rawValue": false,
+        "metadata": {
+          "abbreviateHome": "true"
+        }
+      },
+      {
+        "id": "d8abd7ed-1854-4f33-9652-c0d64e59e684",
+        "type": "tokens-input",
+        "backgroundColor": "bgBrightBlack"
+      },
+      {
+        "id": "0a606ddc-cded-49ef-a50b-1ef01623167a",
+        "type": "tokens-output",
+        "backgroundColor": "bgBrightGreen"
+      },
+      {
+        "id": "40029e12-b024-44e6-86f1-ada59355ab8c",
+        "type": "tokens-total",
+        "backgroundColor": "bgBrightCyan"
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPadding": " ",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "theme": "catppuccin",
+    "autoAlign": true,
+    "continueThemeAcrossLines": false
+  }
+}

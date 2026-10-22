@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "claudeCode.preferredLocation": "panel",
+    "workbench.colorTheme": "Catppuccin Mocha"
+}

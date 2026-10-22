@@ -1,0 +1,72 @@
+# herdr config mirroring ~/.tmux.conf keybindings
+# Generated to replicate the tmux prefix/command layout with herdr.
+#
+# tmux: set -g prefix ^A   ->  herdr prefix ctrl+a
+onboarding = false
+
+[theme]
+# Your tmux status bar uses catppuccin; herdr's default theme matches the look.
+name = "catppuccin"
+
+# Match your tmux floax scratch-terminal border (@floax-border-color 'magenta').
+[theme.custom]
+accent = "#ff79c6"
+
+[keys]
+# ---- Prefix (tmux: ^A) ----
+prefix = "ctrl+a"
+
+# ---- Tabs (tmux "windows") ----
+new_tab = "prefix+c"            # tmux new-window (prefix+c)
+rename_tab = "prefix+r"         # tmux `bind r rename-window`
+previous_tab = "prefix+p"       # tmux previous-window
+next_tab = "prefix+n"           # tmux next-window
+switch_tab = "prefix+1..9"      # tmux switch to window 1-9 (your base-index 1)
+close_tab = "prefix+shift+x"    # close active tab
+
+# ---- Panes (matches tmux vi pane navigation) ----
+focus_pane_left = ["prefix+left", "prefix+h"]    # tmux select-pane -L (arrows + vi keys)
+focus_pane_down = ["prefix+down", "prefix+j"]    # tmux select-pane -D
+focus_pane_up = ["prefix+up", "prefix+k"]        # tmux select-pane -U
+focus_pane_right = ["prefix+right", "prefix+l"]  # tmux select-pane -R
+split_vertical   = "prefix+v"   # tmux `bind v split-window -h` => side-by-side (right)
+split_horizontal = "prefix+s"   # tmux `bind s split-window -v` => stacked (below)
+zoom = "prefix+z"               # tmux resize-pane -Z
+close_pane = "prefix+x"         # tmux kill-pane
+copy_mode = "prefix+["          # tmux copy selection (vi)
+
+# Resize moved off of prefix+r so rename keeps tmux's `r`.
+# In herdr you can also just drag pane borders with the mouse.
+resize_mode = "prefix+alt+r"
+
+# ---- Session / detach (herdr keeps everything running, like detach-on-destroy off) ----
+detach = "prefix+q"
+
+# ---- Workspace / session navigation ----
+workspace_picker = "prefix+w"   # tmux `bind w list-windows`
+new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"
+close_workspace = "prefix+shift+d"
+goto = "prefix+g"
+
+# ---- Settings moved off prefix+s because your tmux `s` = split below ----
+settings = "prefix+shift+s"
+
+# ---- UI ----
+toggle_sidebar = "prefix+b"
+
+[ui]
+# tmux set status-position top; herdr tab row default is already top.
+tab_bar_position = "top"
+
+# ---- floax-style scratch terminal popup ----
+# Mirrors your tmux floax bind (prefix+p) at 80%x80%.
+# Bound to prefix+alt+p because prefix+p is already previous_tab.
+# Close it by exiting the shell (Esc in most setups).
+[[keys.command]]
+key = "prefix+alt+p"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "scratch terminal (floax)"
+width = "80%"
+height = "80%"
