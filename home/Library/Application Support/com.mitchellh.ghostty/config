@@ -19,15 +19,19 @@ background-opacity = 1
 copy-on-select = true
 
 # ---- Behavior ---------------------------------------------------------
-# Option key acts as Alt/Meta (enables emacs/readline/vim alt-bindings:
-# Option+B back-word, Option+D kill-word, etc.).
-macos-option-as-alt = true
+# Left Option acts as Alt/Meta (enables emacs/readline/vim alt-bindings:
+# Option+B back-word, Option+D kill-word, etc.). Right Option stays normal
+# so Swedish layout characters work (@ { } [ ] | \ $ via Option).
+macos-option-as-alt = left
 # Restore tabs/splits across restarts.
 window-save-state = always
 # Fully quit when the last window closes (no lingering dock icon).
 quit-after-last-window-closed = true
 # New tabs append at the end of the tab list.
 window-new-tab-position = end
+# TEMPORARY: stable 1.3.1 breaks titlebar tabs on macOS 27 (ghostty#13070,
+# fixed on tip by #13069). Switch back to stable once Ghostty >= 1.4 ships.
+auto-update-channel = tip
 
 # ---- Keybindings (ported from WezTerm) ----------------------------------
 # WezTerm: SHIFT+Enter -> send \x1b[13;2u   (Kitty keyboard protocol)
