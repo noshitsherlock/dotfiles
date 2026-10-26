@@ -1,0 +1,68 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-kimi-full"
+  ],
+  "provider": {
+    "sparks": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Forefront Sparks",
+      "options": {
+        "baseURL": "${SPARKS_BASE_URL}",
+        "apiKey": "${SPARKS_API_KEY}"
+      },
+      "models": {
+        "qwen3.5-9b": {
+          "name": "Qwen 9B (vision)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "V4-Flash",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
+        }
+      }
+    }
+  },
+  "model": "sparks/deepseek-v4-flash",
+  "small_model": "sparks/qwen3.5-9b",
+  "mcp": {
+    "sparks-searxng": {
+      "type": "remote",
+      "url": "${SPARKS_MCP_URL}",
+      "headers": {
+        "Authorization": "Bearer ${SPARKS_API_KEY}"
+      },
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# Hand-maintained: things on this Mac that were NOT installed via brew,
+# so `brew bundle dump` (Brewfile) doesn't see them. Edit freely.
+#
+# Not here on purpose — IT-managed via Company Portal / Admin By Request:
+# Microsoft 365 (Office, Teams, Outlook, OneDrive, Copilot), PaperCut, NXPowerLite.
+
+# CLI
+brew "rtk"            # Rust Token Killer — ~/.claude/CLAUDE.md + hooks expect it
+brew "mas"            # Mac App Store CLI
+
+# AI
+cask "claude"
+cask "chatgpt"
+cask "antigravity"
+
+# Dev
+cask "docker-desktop"
+cask "iterm2"
+cask "wezterm"
+cask "godot"
+cask "blender"
+cask "figma"
+
+# Productivity / utilities
+cask "1password"
+cask "slack"
+cask "zoom"
+cask "miro"
+cask "stats"
+cask "appcleaner"
+cask "logi-options+"
+cask "rustdesk"
+
+# Mac App Store (requires signing in to the App Store first)
+mas "Amphetamine", id: 937984704
+mas "Xcode", id: 497799835

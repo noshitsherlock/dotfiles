@@ -1,0 +1,38 @@
+# Ghostty config — consolidated single source of truth.
+# (Replaces ~/.config/ghostty/config, the low-priority file whose duplicates
+#  caused the earlier "theme didn't take" and "tabs disabled" issues.)
+
+# ---- Appearance -------------------------------------------------------
+theme = Catppuccin Mocha
+font-family = JetBrains Mono
+font-size = 16
+
+# Tabs require window decorations (the titlebar) to be rendered.
+window-decoration = true
+# Custom titlebar with the tab strip integrated into it — matches the
+# Catppuccin background for a seamless look.
+macos-titlebar-style = tabs
+
+background-opacity = 1
+# (Blur disabled — opacity at 1 keeps the background fully solid.)
+# Copy is on by default; kept explicit for documentation.
+copy-on-select = true
+
+# ---- Behavior ---------------------------------------------------------
+# Option key acts as Alt/Meta (enables emacs/readline/vim alt-bindings:
+# Option+B back-word, Option+D kill-word, etc.).
+macos-option-as-alt = true
+# Restore tabs/splits across restarts.
+window-save-state = always
+# Fully quit when the last window closes (no lingering dock icon).
+quit-after-last-window-closed = true
+# New tabs append at the end of the tab list.
+window-new-tab-position = end
+
+# ---- Keybindings (ported from WezTerm) ----------------------------------
+# WezTerm: SHIFT+Enter -> send \x1b[13;2u   (Kitty keyboard protocol)
+keybind = shift+enter=text:\x1b[13;2u
+# WezTerm: CTRL+q -> ToggleFullScreen
+keybind = ctrl+q=toggle_fullscreen
+# WezTerm: CTRL+' -> ClearScrollback 'ScrollbackAndViewport'
+keybind = ctrl+quote=clear_screen

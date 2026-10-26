@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "sparks-searxng": {
+      "url": "${SPARKS_MCP_URL}",
+      "headers": {
+        "Authorization": "Bearer ${SPARKS_API_KEY}"
+      },
+      "directTools": [
+        "searxng-searxng_web_search",
+        "searxng-web_url_read",
+        "context7-resolve-library-id",
+        "context7-query-docs",
+        "imagegen-generate_image",
+        "imagegen-describe_image"
+      ]
+    }
+  }
+}
