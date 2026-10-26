@@ -70,6 +70,20 @@ defaults write com.apple.dock mru-spaces -bool false
 # Dock: Disable recents
 defaults write com.apple.dock show-recents -bool false
 
+# Dock: Auto-hide, smaller icons, minimize into app icon
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock tilesize -int 42
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Appearance: Dark mode
+defaults write -g AppleInterfaceStyle -string Dark
+
+# Finder: List view, path bar, show hidden files, no internal disk on desktop
+defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+
 # Screenshot: Save screenshots with date in filename
 defaults write com.apple.screencapture include-date -bool true
 
