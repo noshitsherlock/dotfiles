@@ -104,5 +104,43 @@ defaults write com.apple.Terminal 'Default Window Settings' -string Pro
 defaults write com.apple.Terminal NewTabSettingsBehavior -int 1
 defaults write com.apple.Terminal NewTabWorkingDirectoryBehavior -int 1
 
-echo 'done: killing Dock and Finder'
-killall Dock Finder 2>/dev/null || true
+# Appearance: Dark app icons
+defaults write -g AppleIconAppearanceTheme -string RegularDark
+
+# Global: Don't swipe between pages with two fingers
+defaults write -g AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Global: List view in Open dialogs
+defaults write -g NavPanelFileListModeForOpenMode -int 2
+
+# Dock: No bouncing on app launch, scale minimize effect
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock mineffect -string scale
+
+# Windows: Disable macOS tiling (Rectangle handles it), hide desktop items
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTilingOptionAccelerator -bool false
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
+defaults write com.apple.WindowManager HideDesktop -bool true
+
+# Menu bar clock: Day of week, AM/PM
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+defaults write com.apple.menuextra.clock ShowAMPM -bool true
+
+# Shortcuts: Free ⌘Space for Raycast (disable Spotlight and Finder search),
+# and disable ⌃Space / ⌃⌥Space input source switching
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '{enabled = 0; value = {type = standard; parameters = (65535, 49, 1048576);};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 '{enabled = 0; value = {type = standard; parameters = (65535, 49, 1572864);};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '{enabled = 0; value = {type = standard; parameters = (32, 49, 262144);};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 '{enabled = 0; value = {type = standard; parameters = (32, 49, 786432);};}'
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u 2>/dev/null || true
+
+# Login items: Rectangle and Raycast
+for app in Rectangle Raycast; do
+  osascript -e 'tell application "System Events" to get the name of every login item' 2>/dev/null | grep -q "$app" && continue
+  [ -d "/Applications/$app.app" ] && osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$app.app\", hidden:false}" >/dev/null
+done
+
+echo 'done: killing Dock, Finder and SystemUIServer'
+killall Dock Finder SystemUIServer 2>/dev/null || true
