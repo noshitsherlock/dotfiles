@@ -151,3 +151,4 @@ export NVM_DIR="$HOME/.nvm"
 # Höljes RX development tools
 alias godot='/Applications/Godot.app/Contents/MacOS/Godot'
 alias blender='/Applications/Blender.app/Contents/MacOS/Blender'
+

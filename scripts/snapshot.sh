@@ -79,6 +79,7 @@ grab .pi/agent/pi-statusline.json
 grab .pi/agent/zentui.json
 
 # Strip headroom/serena: proxy URL, hooks, plugins, marketplace.
+sed -i '' '/^# >>> headroom/,/^# <<< headroom/d' "$HOME_OUT/.zshrc"
 not_headroom='map(.hooks |= map(select(.command | test("headroom") | not))) | map(select(.hooks | length > 0))'
 jq --indent 2 "del(.env.ANTHROPIC_BASE_URL) | if .env == {} then del(.env) else . end
   | .hooks |= map_values($not_headroom)
