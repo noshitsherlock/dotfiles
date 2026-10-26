@@ -146,6 +146,10 @@ step_private() {
   log "Claude local permissions"
   [ -f "$PRIV/claude-settings.local.json" ] && place "$PRIV/claude-settings.local.json" "$HOME/.claude/settings.local.json"
 
+  log "Agent memory"
+  [ -d "$PRIV/memory/claude-projects" ] && mkdir -p "$HOME/.claude/projects" && cp -Rn "$PRIV/memory/claude-projects/." "$HOME/.claude/projects/"
+  [ -d "$PRIV/memory/pi" ] && mkdir -p "$HOME/.pi/agent/memory" && cp -Rn "$PRIV/memory/pi/." "$HOME/.pi/agent/memory/"
+
   log "App preferences (quit the apps first for these to stick)"
   for p in "$PRIV"/prefs/*.plist; do
     [ -f "$p" ] && defaults import "$(basename "$p" .plist)" "$p" && echo "  $(basename "$p" .plist)"

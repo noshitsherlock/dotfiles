@@ -142,5 +142,31 @@ for app in Rectangle Raycast; do
   [ -d "/Applications/$app.app" ] && osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$app.app\", hidden:false}" >/dev/null
 done
 
+# Dock: Apps in order, then Downloads (sorted by date added, shown as a stack).
+# Apps that aren't installed yet (e.g. Office before Company Portal) are skipped;
+# re-run ./install.sh macos once they are.
+if command -v dockutil &>/dev/null; then
+  dockutil --remove all --no-restart >/dev/null
+  for app in \
+    "/Applications/Brave Browser.app" \
+    "/System/Applications/Messages.app" \
+    "/System/Applications/Calendar.app" \
+    "/Applications/Microsoft Outlook.app" \
+    "/Applications/iTerm.app" \
+    "/Applications/Obsidian.app" \
+    "/Applications/Microsoft Teams.app" \
+    "/Applications/Microsoft Excel.app" \
+    "/Applications/Microsoft PowerPoint.app" \
+    "/Applications/Slack.app" \
+    "/Applications/WezTerm.app" \
+    "/Applications/Claude.app" \
+    "/Applications/Microsoft 365 Copilot.app"; do
+    if [ -d "$app" ]; then dockutil --add "$app" --no-restart >/dev/null; else echo "  dock: not installed yet, skipping $(basename "$app" .app)"; fi
+  done
+  dockutil --add "$HOME/Downloads" --view grid --display stack --sort dateadded --section others --no-restart >/dev/null
+else
+  echo '  dockutil not installed, skipping Dock layout'
+fi
+
 echo 'done: killing Dock, Finder and SystemUIServer'
 killall Dock Finder SystemUIServer 2>/dev/null || true

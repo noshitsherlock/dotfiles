@@ -59,6 +59,8 @@ grab .config/opencode/tui.jsonc
 grab .config/opencode/package.json
 grab "Library/Application Support/com.mitchellh.ghostty/config"
 grab "Library/Application Support/Code/User/settings.json"
+grab "Library/Application Support/Godot/editor_settings-4.7.tres"
+grab Library/Services
 
 echo "==> AI agents"
 grab .claude/settings.json
@@ -127,6 +129,15 @@ SPARKS_MCP_URL=${sparks_url%/v1}/mcp/
 SPARKS_API_KEY=$sparks_key
 EOF
 chmod 600 "$PRIV/secrets.env"
+
+echo "==> Private: agent memory (Claude per-project memory, Pi memory)"
+rm -rf "$PRIV/memory"; mkdir -p "$PRIV/memory/claude-projects" "$PRIV/memory/pi"
+for m in "$HOME"/.claude/projects/*/memory; do
+  [ -n "$(ls -A "$m" 2>/dev/null)" ] || continue
+  p="$(basename "$(dirname "$m")")"
+  mkdir -p "$PRIV/memory/claude-projects/$p" && cp -R "$m" "$PRIV/memory/claude-projects/$p/"
+done
+[ -d "$HOME/.pi/agent/memory" ] && cp -R "$HOME/.pi/agent/memory/." "$PRIV/memory/pi/"
 
 echo "==> Private: git repos"
 : > "$PRIV/repos.txt"

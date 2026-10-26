@@ -6,7 +6,12 @@
 
 # CLI
 brew "rtk"            # Rust Token Killer — ~/.claude/CLAUDE.md + hooks expect it
-brew "mas"            # Mac App Store CLI
+brew "mas"            # Fonts installed by hand on the old Mac
+cask "font-meslo-for-powerlevel10k"   # MesloLGS NF, used by the p10k prompt
+cask "font-manrope"
+
+# Mac App Store CLI
+brew "dockutil"       # Dock layout in macos.sh
 
 # AI
 cask "claude"
@@ -30,6 +35,10 @@ cask "stats"
 cask "appcleaner"
 cask "logi-options+"
 cask "rustdesk"
+
+# Fonts installed by hand on the old Mac
+cask "font-meslo-for-powerlevel10k"   # MesloLGS NF, used by the p10k prompt
+cask "font-manrope"
 
 # Mac App Store (requires signing in to the App Store first)
 mas "Amphetamine", id: 937984704
